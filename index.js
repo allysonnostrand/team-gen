@@ -13,11 +13,12 @@ function initialQuestion() {
             name: 'managerInfo',
         }
     ]).then(answers => {
-        if (answers.name = true){
+        if (answers.managerInfo = true){
             return askQuestions();
         }
     })
 }
+
 function askQuestions(){
     inquirer.prompt([
         {
@@ -25,8 +26,7 @@ function askQuestions(){
             message: 'What would you like to do next?',
             choices: ['add an Engineer', 'add an Intern', 'finish building my team'],
             name: 'menuOptions',
-            askAnswered: 'true',
-        }
+        },
                 ]).then(answers => {
                     switch (answers.menuOptions){
                         case "add an Engineer":
@@ -38,7 +38,7 @@ function askQuestions(){
                                 name: 'engineerInfo',
                             },
                             ]).then(answers =>{
-                                if (answers.name = true){
+                                if (answers.engineerInfo = true){
                                     return askQuestions();
                                 }
                             }) 
@@ -53,44 +53,23 @@ function askQuestions(){
                                 name: 'internInfo',
                             },
                             ]).then(answers =>{
-                                if (answers.name = true){
+                                if (answers.internInfo = true){
                                     return askQuestions();
                                 } 
                             }) 
                             break;
 
-            case "finish building my team":
-                console.log('You got it!');
-            fs.writeFile('./index.html', team, err=> {
-                if(err){
-                    throw err
-                }
-            })   
-                break;
-        }
+                        case "finish building my team":
+                            console.log('You got it!');
+                            fs.writeFile('./index.html', team, err=> {
+                            if(err){
+                                throw err
+                            }
+                        })   
+                            break;
+                     }
     }
     
     )}
-
-    // function menuOpts(){
-    //     inquirer.prompt([
-    //         {
-    //             type: 'list',
-    //             message: 'What would you like to do next?',
-    //             choices: ['add an Engineer', 'add an Intern', 'finish building my team'],
-    //             name: 'menuOptions',
-    //         }
-    //     ])
-    // }
-
-    // function callFunctions(){
-    //     console.log('hello')
-    //     initialQuestion().then(answers => {
-    //         if(answers){
-    //             return askQuestions();
-    //         }
-    //     })
-    //     }
         
-    initialQuestion();
-    // askQuestions();
+initialQuestion();
