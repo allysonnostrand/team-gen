@@ -74,7 +74,7 @@ function askQuestions(){
 
                         case "finish building my team":
                             console.log('You got it!');
-                            fs.writeFile('./index.html', team(employees), err=> {
+                            fs.writeFile('./samplegenhtml/index.html', team(employees), err=> {
                             if(err){
                                 throw err
                             }
